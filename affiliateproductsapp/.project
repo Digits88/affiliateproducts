@@ -15,5 +15,8 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.playframework.playclipse.playNature</nature>
 	</natures>
-	
+	<linkedResources><link><name>sass-1.1</name><type>2</type><location>C:/workspace_newnew/affiliateproducts/affiliateproductsapp/modules/sass-1.1/app</location></link>
+<link><name>guice-1.2</name><type>2</type><location>C:/workspace_newnew/affiliateproducts/affiliateproductsapp/modules/guice-1.2/app</location></link>
+<link><name>conf/guice-1.2</name><type>2</type><location>C:/workspace_newnew/affiliateproducts/affiliateproductsapp/modules/guice-1.2/conf</location></link>
+</linkedResources>
 </projectDescription>
