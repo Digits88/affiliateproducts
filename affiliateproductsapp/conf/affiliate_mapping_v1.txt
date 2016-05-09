@@ -1,0 +1,76 @@
+POST
+http://localhost:9210/affiliate/
+
+
+{
+   "settings" : {
+     	"number_of_shards" : 5,
+		"number_of_replicas" : 0
+     },
+
+	 "mappings" : {
+ 		"product" :{
+	        "_source" : { "enabled" : true},
+        	"_routing":{"required":true, "path":"id"},
+    	    "_id" : {"path" : "id"},
+	        "properties" : {
+        		"id" :  { "type" : "string", "store":"no", "index" : "not_analyzed" },
+    	    	"advertiser_id" :  { "type" : "long", "store":"no" },
+	        	"seller_id" :  { "type" : "long", "store":"no"},
+        		"advertiser_category" :  { "type" : "string", "store":"no"},
+        		"category_id" :  { "type" : "long", "store":"no"},
+   		     	"buy_url" :  { "type" : "string", "store":"no"},
+	        	"description" :  { "type" : "string", "analyzer": "english"},
+        		"image_url" :  { "type" : "string", "store":"no" },
+        		"in_stock" :  { "type" : "integer", "store":"no"},
+    	    	"manufacturer_name" :  { "type" : "string", "store":"no"},
+	        	"brand_id" :  { "type" : "integer", "store":"no"},
+        		"name" :  { "type" : "string","analyzer": "english"},
+        		"keywords" :  { "type" : "string","analyzer": "english"},
+   		     	"price" :  { "type" : "double", "store": false },
+	        	"retail_price" :  { "type" : "double", "store": false },
+	        	"sale_price" :  { "type" : "double", "store": "true" },
+	        	"final_price" :  { "type" : "double", "store": "true" },
+	        	"sale" :  { "type" : "integer", "store": "true" },
+        		"sku" :  { "type": "string","store":"true", "index" : "not_analyzed"  },
+        		"creation_date" :  {"type" : "date",     "store":"true" },
+    	    	"updation_date" :  {"type" : "date",     "store":"no",  "format" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+	        	"version" :  { "type" : "integer", "store":"no"},
+	        	
+	        	"brand"	:	{
+	        		"type"	:	"object",
+        				"id" :  { "type" : "long", "store":"no", "index" : "not_analyzed" },
+        				"name"	:	{ "type" : "string", "store":"no"},
+        				"creation_date" :  {"type" : "date",     "store":"no",  "format" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+    	    			"updation_date" :  {"type" : "date",     "store":"no",  "format" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+	        			"version" :  { "type" : "integer", "store":"no"}
+	        	},
+	        	
+	        	"seller"	:	{
+	        		"type"	:	"object",
+        				"id" :  { "type" : "long", "store":"true", "index" : "not_analyzed" },
+    	    			"advertiser_id" :  { "type" : "long", "store":"no" },
+        				"name"	:	{ "type" : "string", "store":"no"},
+    	    			"affiliate_id" :  { "type" : "long", "store":"no" },
+        				"offer_id"	:	{ "type" : "string", "store":"no"},
+	        			"min_comm" :  { "type" : "double", "store": "no" },
+	        			"max_comm" :  { "type" : "double", "store": "no" },
+        				"creation_date" :  {"type" : "date",     "store":"no",  "format" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+    	    			"updation_date" :  {"type" : "date",     "store":"no",  "format" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+	        			"version" :  { "type" : "integer", "store":"no"}
+	        	},
+	        	
+	        	"category"	:	{
+	        		"type"	:	"object",
+        				"id" :  { "type" : "long", "store":"no", "index" : "not_analyzed" },
+        				"name" :  { "type" : "string", "store":"no"},
+        				"syw_tag_id" :  { "type" : "integer", "store":"no"},
+        				"creation_date" :  {"type" : "date",     "store":"no",  "format" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+    	    			"updation_date" :  {"type" : "date",     "store":"no",  "format" : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+	        			"version" :  { "type" : "integer", "store":"no"}
+	        	}
+	        	
+        	 }
+ 		} 
+ 	}
+ }

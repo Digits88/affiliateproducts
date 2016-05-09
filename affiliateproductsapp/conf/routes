@@ -1,0 +1,101 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+GET     /version								BaseController.version
+
+
+# Batch jobs
+GET 	/job/createbrandcategoryalltsv/{key} 				JobsController.createBrandCategoryAllTSV
+GET 	/job/syncproductdetails/{key} 						JobsController.syncProductDetails
+GET 	/job/syncproductdetailsfor/{key} 					JobsController.syncProductDetailsFor
+GET 	/job/createcategory/{key} 							JobsController.createCategory
+GET 	/job/createbrand/{key} 								JobsController.createBrand
+GET 	/job/createproductfeedastsv/{key}					JobsController.createProductFeedAsTSV
+GET 	/job/syncproductdetailstsv/{key} 					JobsController.syncProductDetailsTSV
+GET 	/job/updatebrandandcategory/{key} 					JobsController.updateBrandAndCategory
+GET 	/job/updatecategorymappingtsvfile/{key} 			JobsController.updateCategoryMappingTSV
+GET 	/job/updatefinalpriceandsale/{key} 					JobsController.updateFinalPriceAndSale
+
+# CJ Super Feed
+GET 	/job/synccjsuperproductdetailstsv/{key} 			JobsController.syncCJSuperProductDetailsTSV
+GET		/job/createcjsuperbrandcategory/{key}				JobsController.createCJSuperFeedBrandCategory
+
+# Get Prime products
+GET		/job/getPrimeProductList/{productId}				PrimeProductController.getPrimeProductList
+
+#GET 	/job/syncproductdetailsindividual/{key} 			JobsController.syncProductDetailsIND
+
+# For Sears/Kmart Feeds
+GET 	/job/syncskproductdetailstsv/{key} 					JobsController.syncSKProductDetailsTSV
+GET 	/job/createskbrandcategoryalltsv/{key} 				JobsController.createSKBrandCategoryAllTSV
+GET 	/job/updatesksimilarproduct/{key}					JobsController.updateSKSimilarityProduct
+
+# For Sears/Kmart get same/similar products
+GET 	/sk/sameproducts									SKSimilarProductsController.getSameProducts
+GET 	/sk/similarproducts									SKSimilarProductsController.getSimilarProducts
+
+# For Rakuten Feeds
+GET 	/job/syncrakutenproductdetails/{key} 				JobsController.syncRakutenProductDetails
+GET 	/job/createrakutenbrandcategoryall/{key} 			JobsController.createRakutenBrandCategoryAll
+GET 	/job/syncrakutensuperfeedjob/{key} 					JobsController.syncRakutenSuperFeedJob
+
+# For Impact Radius Feeds
+GET 	/job/syncimpactradiusproductdetails/{key} 			JobsController.syncImpactRadiusProductDetails
+GET 	/job/createimpactradiusbrandcategoryall/{key} 		JobsController.createImpactRadiusBrandCategoryAll
+
+# Taxonomy update job
+GET 	/job/updatecategoriesjob/{key} 						JobsController.updateCategoriesJob
+
+# Category controllers
+GET		/category/byseller									CategoryController.getSellerCategories
+GET		/category/getchilds									CategoryController.getChildCategories
+POST	/category/mapcategory								CategoryController.mapCategory
+# Products
+GET 	/products/search 									ProductController.searchProducts
+GET 	/products/getbyseller								ProductController.getBySeller
+GET 	/products/getsellers								ProductController.getSellers
+
+# Used For Code Test
+GET 	/job/codetest/{key} 								JobsController.testCodeJob
+GET 	/job/cleanfeedfolder/{key} 							JobsController.cleanFeedFolder
+
+GET		/job/updatemissingcategory/{key}					JobsController.updateMissingCategoryJob
+GET		/job/updatemissingbrand/{key}						JobsController.updateMissingBrandJob
+
+# Image Server
+# GET     /image/{<[0-9]+>id}/{name}                        ImageController.getImage
+# GET     /image/{<[0-9]+>id}/{name}/{<[0-9x]+>dimension}   ImageController.getImageDimension
+
+# Image_Server_Approach_One
+# GET		/getImage										ImageController.getDifferentImageDimension
+# Image_Server_Approach_Two
+# GET		/getImage										ImageController.getISImage
+
+# Image_Server_Profile_Image
+GET		/getImage											ImageController.getImageFromServer
+GET		/getMedia											ImageController.getMediaFromServer
+GET		/getEssential										ImageController.getEssentialFromServer
+GET 	/job/savesellerimagejob/{key} 						JobsController.saveSellerImageJob
+GET 	/job/savebrandimagejob/{key} 						JobsController.saveBrandImageJob
+GET 	/job/saveuserinstagramprofileimagejob/{key} 		JobsController.saveUserInstagramProfileImageJob
+POST	/image/uploadessential								ImageController.updateEssentialContent
+POST	/image/saveuserinstagramprofile/{key}				ImageController.saveUserInstagramProfileImage
+POST	/image/updateuserprofilepicture						ImageController.updateUserProfilePictureImage
+POST	/image/uploadmedia									ImageController.updateMediaContent
+
+
+
+# Catch all
+*       /{controller}/{action}                  			{controller}.{action}
+
+

@@ -1,0 +1,7 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> sass 1.1
+    - play -> guice 1.2
+    - com.google.guava -> guava 16.0.1

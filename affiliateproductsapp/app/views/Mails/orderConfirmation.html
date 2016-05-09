@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Order Confirmation</title>
+</head>
+<body>
+<p>
+    Hello ${data?.User?.getDisplayName()}, 
+</p>
+<p>Your order for below items has been successful, </p>
+<div>Order Reference number - ${data?.Order?.getId()} </div>
+<div>Order Total - ${data?.Order?.totalPrice}</div>
+<div>Items : </div>
+<div>#{list items : data?.Order?.items, as:'item'} 
+<div>
+${item.product.name} - ${item?.quantity} - ${item?.totalPrice}
+</div>
+#{/list}</div>
+</body>
+</html>
